@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF DRM Viewer</title>
+  <link rel="stylesheet" href="/static/viewer.css">
+</head>
+<body>
+  <header>
+    <strong>PDF DRM Viewer</strong>
+    <span id="who"></span>
+    <button id="logout" hidden>Abmelden</button>
+  </header>
+
+  <main>
+    <section id="login-view">
+      <form id="login-form">
+        <h1>Anmelden</h1>
+        <label>E-Mail <input name="email" type="email" autocomplete="username" required></label>
+        <label>Passwort <input name="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Anmelden</button>
+        <p class="error" id="login-error"></p>
+      </form>
+    </section>
+
+    <section id="library-view" hidden>
+      <h1>Meine Dokumente</h1>
+      <ul id="library"></ul>
+      <p class="error" id="library-error"></p>
+    </section>
+
+    <section id="reader-view" hidden>
+      <div class="toolbar">
+        <button id="back">&larr; Bibliothek</button>
+        <span id="doc-title"></span>
+        <span class="spacer"></span>
+        <button id="prev">&lsaquo;</button>
+        <span><input id="page-input" type="number" min="1" value="1"> / <span id="page-count"></span></span>
+        <button id="next">&rsaquo;</button>
+        <button id="zoom-out">&minus;</button>
+        <button id="zoom-in">+</button>
+        <button id="print" hidden>Drucken</button>
+        <button id="download" hidden>Download</button>
+      </div>
+      <p class="error" id="reader-error"></p>
+      <div id="page-wrap"><img id="page" alt="" draggable="false"></div>
+    </section>
+  </main>
+
+  <script src="/static/viewer.js"></script>
+</body>
+</html>

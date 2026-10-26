@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdfdrm"
+version = "0.1.0"
+description = "PDF DRM Server: verschlüsselte Ablage, Lizenzen, serverseitiges Rendering mit Wasserzeichen"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.9",
+    "cryptography>=42",
+    "PyJWT>=2.8",
+    "pypdf>=4.0",
+    "pypdfium2>=4.25",
+    "Pillow>=10.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+pdfdrm = "pdfdrm.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pdfdrm*"]
+
+[tool.setuptools.package-data]
+pdfdrm = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
